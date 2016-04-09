@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.11.2">
+<file name="/home/juhapekm/Documents/Kurssit/Ohtu/Viikko3/ohtu2016-master/viikko3/LoginEasyBv1/src/main/java/ohtu/domain/User.java">
+</file>
+<file name="/home/juhapekm/Documents/Kurssit/Ohtu/Viikko3/ohtu2016-master/viikko3/LoginEasyBv1/src/main/java/ohtu/App.java">
+<error line="77" severity="error" message="&apos;method def&apos; child have incorrect indentation level 12, expected level should be 8." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+</file>
+<file name="/home/juhapekm/Documents/Kurssit/Ohtu/Viikko3/ohtu2016-master/viikko3/LoginEasyBv1/src/main/java/ohtu/io/IO.java">
+</file>
+<file name="/home/juhapekm/Documents/Kurssit/Ohtu/Viikko3/ohtu2016-master/viikko3/LoginEasyBv1/src/main/java/ohtu/io/StubIO.java">
+</file>
+<file name="/home/juhapekm/Documents/Kurssit/Ohtu/Viikko3/ohtu2016-master/viikko3/LoginEasyBv1/src/main/java/ohtu/io/ConsoleIO.java">
+</file>
+<file name="/home/juhapekm/Documents/Kurssit/Ohtu/Viikko3/ohtu2016-master/viikko3/LoginEasyBv1/src/main/java/ohtu/services/AuthenticationService.java">
+</file>
+<file name="/home/juhapekm/Documents/Kurssit/Ohtu/Viikko3/ohtu2016-master/viikko3/LoginEasyBv1/src/main/java/ohtu/data_access/UserDao.java">
+</file>
+<file name="/home/juhapekm/Documents/Kurssit/Ohtu/Viikko3/ohtu2016-master/viikko3/LoginEasyBv1/src/main/java/ohtu/data_access/InMemoryUserDao.java">
+</file>
+</checkstyle>

@@ -113,7 +113,7 @@ scenario "can not login with account that is not succesfully created", {
       app.run()
     }
     then  'new credentials do not allow logging in to system', {
-        io.getPrints().shouldHave("wrong username or password")
+            io.getPrints().shouldHave("wrong username or password")
         //io.getPrints().shouldHave("this will break the test and build")
 
     }
