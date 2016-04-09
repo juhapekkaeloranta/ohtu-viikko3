@@ -15,28 +15,33 @@ public class AuthenticationService {
 
     public boolean logIn(String username, String password) {
         for (User user : userDao.listAll()) {
-            if (user.getUsername().equals(username)
-                    && user.getPassword().equals(password)) {
+            if (correctUsernameAndPassword(
+                username, password,
+                user.getUsername(), user.getPassword())) {
                 return true;
-            }
+            }  
         }
-
         return false;
+    }
+    
+    public boolean correctUsernameAndPassword(
+        String usernameInput, String passwordInput,
+        String usernameCorrect, String passwordCorrect) {
+        return usernameInput.equals(usernameCorrect) &&
+            passwordInput.equals(passwordCorrect);
     }
 
     public boolean createUser(String username, String password) {
         if (userDao.findByName(username) != null) {
             return false;
         }
-
         if (invalid(username, password)) {
             return false;
         }
-
         userDao.add(new User(username, password));
-
         return true;
     }
+    
     /**
      * Validity check of username and password
      * when creating a new user to system
@@ -46,19 +51,25 @@ public class AuthenticationService {
      */
     private boolean invalid(String username, String password) {
         // validity check of username and password
+        return usernameInvalid(username) || passwordInvalid(password);
+    }
+    
+    private boolean passwordInvalid(String password) {
         //too short password
-        if (password.length()<8) {
-            return true;
-        }
         //no digit in password
-        if (!containsDigit(password)) {
-            return true;
-        }
+        return (password.length()<8 || !containsDigit(password));
+    }
+    
+    private boolean usernameInvalid(String username) {
         //too short username
-        if (username.length()<3) {
-            return true;
-        }
         //username taken
+        return usernameTooShort(username) || usernameTaken(username);
+    }
+    private boolean usernameTooShort(String username) {
+        return (username.length()<3);
+    }
+    
+    private boolean usernameTaken(String username) {
         for (User user : userDao.listAll()) {
             if (user.getUsername().equals(username)) {
                 return true;
@@ -68,14 +79,21 @@ public class AuthenticationService {
     }
     
     private boolean containsDigit(String s) {
-        boolean containsDigit = false;
-        if (s != null && !s.isEmpty()) {
-            for (char c : s.toCharArray()) {
-                if (containsDigit = Character.isDigit(c)) {
-                    break;
-                }
+        if (isNullOrEmpty(s)) {
+            return false;
+        }   
+        return containsDigit(s.toCharArray());
+    }
+    private boolean containsDigit(char[] ca) {
+        for (char c : ca) {
+            if (Character.isDigit(c)) {
+                return true;
             }
         }
-        return containsDigit;
+        return false;
     }
+    
+    private boolean isNullOrEmpty(String s) {
+        return s == null || s.isEmpty();
+    } 
 }

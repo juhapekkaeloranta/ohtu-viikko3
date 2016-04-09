@@ -28,28 +28,37 @@ public class App {
     public void run() {
         while (true) {
             String command = io.readLine(">");
-
             if (command.isEmpty()) {
                 break;
+            } else {
+                commandSwitch(command);
             }
-
-            if (command.equals("new")) {
-                String[] usernameAndPasword = ask();
-                if (auth.createUser(usernameAndPasword[0], usernameAndPasword[1])) {
-                    io.print("new user registered");
-                } else {
-                    io.print("new user not registered");
-                }
-
-            } else if (command.equals("login")) {
-                String[] usernameAndPasword = ask();
-                if (auth.logIn(usernameAndPasword[0], usernameAndPasword[1])) {
-                    io.print("logged in");
-                } else {
-                    io.print("wrong username or password");
-                }
-            }
-
+        }
+    }
+    
+    private void commandSwitch(String command) {
+        if (command.equals("new")) {
+            commandPromtNew();
+        } else if (command.equals("login")) {
+            commandPromtLogin();
+        }
+    }
+    
+    private void commandPromtNew() {
+        String[] usernameAndPasword = ask();
+        if (auth.createUser(usernameAndPasword[0], usernameAndPasword[1])) {
+            io.print("new user registered");
+        } else {
+            io.print("new user not registered");
+        }
+    }
+    
+    private void commandPromtLogin() {
+        String[] usernameAndPasword = ask();
+        if (auth.logIn(usernameAndPasword[0], usernameAndPasword[1])) {
+            io.print("logged in");
+        } else {
+            io.print("wrong username or password");
         }
     }
 
@@ -61,11 +70,11 @@ public class App {
 //    }
     
     public static void main(String[] args) {
-    ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/resources/spring-context.xml");
+        ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/resources/spring-context.xml");
 
-    App application = (App) ctx.getBean("App");
-    //App application = ctx.getBean(App.class);
-    application.run();
+        //App application = (App) ctx.getBean("App");
+        App application = ctx.getBean(App.class);
+        application.run();
     }
     
     // testejä debugatessa saattaa olla hyödyllistä testata ohjelman ajamista
