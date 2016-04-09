@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="dao" class="ohtu.data_access.InMemoryUserDao">
+    </bean>
+
+	<bean id="io" class="ohtu.io.ConsoleIO">
+    </bean>
+
+    <bean id="auth" class="ohtu.services.AuthenticationService">
+        <constructor-arg ref="dao" />
+    </bean>
+
+	<bean id="ohtu.App" class="ohtu.App">
+        <constructor-arg index="0" ref="io" />
+		<constructor-arg index="1" ref="auth" />
+    </bean>
+
+</beans>
