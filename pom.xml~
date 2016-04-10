@@ -86,6 +86,7 @@
                 <artifactId>cobertura-maven-plugin</artifactId>
                 <version>${cobertura.version}</version>
                 <configuration>
+					<failsOnError>true</failsOnError>
                     <formats>
                         <format>html</format>
                         <format>xml</format>
