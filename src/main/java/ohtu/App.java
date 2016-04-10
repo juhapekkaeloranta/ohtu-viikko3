@@ -69,22 +69,12 @@ public class App {
 //        new App(io, auth).run();
 //    }
     
-    public static void main(String[] args) 
-    {
+    public static void main(String[] args) {
         ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/resources/spring-context.xml");
 
         //App application = (App) ctx.getBean("App");
         App application = ctx.getBean(App.class);
-            application.run();
-        if (true) {
-            if(true) {
-                if(true) {
-                    int x = 1+1;
-                } else {
-                    int x = 1;
-                }
-            }
-        }
+        application.run();
     }
     
     // testejä debugatessa saattaa olla hyödyllistä testata ohjelman ajamista

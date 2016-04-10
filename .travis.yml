@@ -1,6 +1,5 @@
 language: java
 
-before_script:
+script:
   - mvn test
   - mvn integration-test
-  - mvn jxr:jxr checkstyle:checkstyle -Dcheckstyle.config.location=my_checks.xml
