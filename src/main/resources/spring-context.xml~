@@ -3,14 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
-	
-	<bean id="dao" class="ohtu.data_access.InMemoryUserDao">
-    </bean>
-<!--
+
     <bean id="dao" class="ohtu.data_access.FileUserDAO">
 	  <constructor-arg type="java.lang.String" value="users.txt"/>
     </bean>
--->
+
 	<bean id="io" class="ohtu.io.ConsoleIO">
     </bean>
 

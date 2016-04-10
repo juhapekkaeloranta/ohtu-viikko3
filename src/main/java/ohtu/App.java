@@ -72,7 +72,6 @@ public class App {
     public static void main(String[] args) {
         ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/resources/spring-context.xml");
 
-        //App application = (App) ctx.getBean("App");
         App application = ctx.getBean(App.class);
         application.run();
     }
